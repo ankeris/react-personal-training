@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import { ImageSlider } from './components/ImageSlider';
-import { Counter } from './components/counter';
-import { MyForm } from './components/MyForm';
+// import { ImageSlider } from './components/ImageSlider';
+
 
 class App extends Component {
   state = {
@@ -13,13 +12,6 @@ class App extends Component {
 
     return (
       <div className="App">
-        {this.state.visible ? <ImageSlider /> : <Counter />}
-        <br/>
-        <button onClick={() => this.setState({visible: !this.state.visible})}>{buttonText}</button>
-        <br/>
-        <div className="form">
-          <MyForm></MyForm>
-        </div>
 
       </div>
     );
