@@ -1,26 +1,45 @@
 import React, { Component } from 'react';
 import './App.css';
-import { ImageSlider } from './components/ImageSlider';
 import { Counter } from './components/counter';
-import { MyForm } from './components/MyForm';
 
 class App extends Component {
   state = {
-    visible: true,
-  }
+    number: 0
+}
+componentWillUnmount() {
+    console.log('unmounting . . .');
+}
+componentDidUpdate() {
+    console.log('update');
+}
+componentDidMount() {
+    console.log('mounting . . .');
+    
+}
+_Next = () => {
+    this.setState({
+        number: this.state.number + 1
+    })
+}
+_Prev = () => {
+    this.setState({
+        number: this.state.number - 1
+    })
+}
   render() {
-    const buttonText = this.state.visible ? "Turn off" : "Turn on"
 
     return (
       <div className="App">
-        {this.state.visible ? <ImageSlider /> : <Counter />}
-        <br/>
-        <button onClick={() => this.setState({visible: !this.state.visible})}>{buttonText}</button>
-        <br/>
-        <div className="form">
-          <MyForm></MyForm>
-        </div>
-
+        <Counter 
+        number={this.state.number} 
+        increment={this._Next} 
+        decrement={this._Prev}
+        />
+        <Counter 
+        number={this.state.number} 
+        increment={this._Next} 
+        decrement={this._Prev}
+        />
       </div>
     );
   }
