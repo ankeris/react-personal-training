@@ -7,8 +7,6 @@ class App extends Component {
         visible: true,
     }
     render() {
-        const buttonText = this.state.visible ? "Turn off" : "Turn on"
-
         return (
             <div className="App">
                 <TodoList />
