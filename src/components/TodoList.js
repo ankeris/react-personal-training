@@ -14,17 +14,28 @@ export default class TodoList extends React.Component {
     submitTodo = (ev) => {
         ev.preventDefault();
         this.setState({
-            todos: this.state.todos.push(this.state.text)
+            todos: [...this.state.todos, this.state.text]
+        })
+    }
+    deleteItem = (number) => {
+        let newList = [...this.state.todos];
+        newList.splice(number, 1)
+        this.setState({
+            todos: newList
         })
     }
     render() {
         return (
             <React.Fragment>
                 <ul>
-                    {this.state.todos.map((item, i) =>
+                    {this.state.todos.map((item, number) =>
                         (
-                            <li key={i}>{i + 1}: {item}</li>
-                        ))}
+                            <li key={number}>
+                                {number + 1}: {item}
+                                <button onClick={() => this.deleteItem(number)}>X</button>
+                            </li>
+                        ))
+                    }
                 </ul>
 
                 <form onSubmit={this.submitTodo}>
